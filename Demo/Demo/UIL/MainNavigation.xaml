@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Demo.UIL.MainNavigation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"
+             xmlns:themes="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys"
+             xmlns:dxnavi="http://schemas.devexpress.com/winfx/2008/xaml/navigation/internal"
+             xmlns:themeKeys="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/themekeys"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:primitives="clr-namespace:DevExpress.Xpf.Controls.Primitives;assembly=DevExpress.Xpf.Controls.v15.2"
+             xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+             xmlns:navigation="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/navigation"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <dxmvvm:Interaction.Triggers>
+            <dxmvvm:EventToCommand Command="{Binding LoadedCommand}" EventName="Loaded" />
+        </dxmvvm:Interaction.Triggers>
+    
+        <DockPanel LastChildFill="true">
+            <dxnav:TileNavPane DockPanel.Dock="Top" Height="60" VerticalAlignment="Top">
+
+           
+                <dxnav:TileNavPane.NavButtons>
+                <dxnav:NavButton Glyph="../Image/home.png" Content=" Home" Command="{Binding GoToHomePage}"/>
+                <dxnav:NavButton  Glyph="../Image/pilot.png" Content="Ausstellung" Command="{Binding GoToOffersPage}"/>
+                <dxnav:NavButton Glyph="../Image/pilot.png" Content="NeueAngebot" Command="{Binding GoToNewOffer}"/>
+                <dxnav:NavButton HorizontalAlignment="Right" Glyph="../Image/configuration.png" Content="Einstellungen" Command="{Binding GoToSettingPage}"/>
+                <dxnav:NavButton HorizontalAlignment="Right" Glyph="../Image/softparklogo.png"/>
+            </dxnav:TileNavPane.NavButtons>
+        </dxnav:TileNavPane>
+            <dxwui:NavigationFrame BackNavigationMode="PreviousScreen"
+                                   DockPanel.Dock="Bottom">
+                <dxmvvm:Interaction.Behaviors>
+                    <navigation:FrameNavigationService />
+                </dxmvvm:Interaction.Behaviors>
+            </dxwui:NavigationFrame>
+        </DockPanel>
+    </Grid>
+</UserControl>
